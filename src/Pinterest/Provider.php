@@ -47,6 +47,10 @@ class Provider extends AbstractProvider
                 'headers' => [
                     'Authorization' => 'Bearer '.$token,
                 ],
+                
+                'query' => [
+                    'fields' => implode(',', ['id', 'first_name', 'last_name', 'url', 'image[small]'])
+                ],
             ]
         );
 
@@ -68,6 +72,7 @@ class Provider extends AbstractProvider
                 'id'       => $user['data']['id'],
                 'nickname' => $nickname,
                 'name'     => $user['data']['first_name'].' '.$user['data']['last_name'],
+                'avatar'   => $user['data']['image']['small']['url'],
             ]
         );
     }
